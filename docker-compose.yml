@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  kafka-tools:
+    image: landoop/fast-data-dev:2.6.2
+    container_name: kafka_setup
+    networks:
+      - broker-kafka
+    ports:
+      - '2181:2181'
+      - '9092:9092'
+      - '8081:8081'
+      - '3030:3030'
+    environment:
+      ADV_HOST: localhost
+      KAFKA_BROKER_ID: 1
+      KAFKA_LOG4J_LOGGERS: "kafka.controller=INFO,kafka.producer.async.DefaultEventHandler=INFO,state.change.logger=INFO"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      RUNTESTS: 0
+      SAMPLEDATA: 0
+networks:
+  broker-kafka:
+    driver: bridge

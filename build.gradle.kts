@@ -12,6 +12,9 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    maven {
+        setUrl("https://packages.confluent.io/maven/")
+    }
 }
 
 dependencies {
@@ -20,5 +23,6 @@ dependencies {
     implementation("org.slf4j:slf4j-simple:1.7.32")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.13.1")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.1")
+    implementation("io.confluent:kafka-streams-avro-serde:7.0.1")
     implementation(kotlin("stdlib"))
 }
